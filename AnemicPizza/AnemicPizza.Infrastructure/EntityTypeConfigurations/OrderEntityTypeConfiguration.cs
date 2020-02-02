@@ -1,0 +1,25 @@
+﻿using AnemicPizza.Domain.Models.Ordering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace AnemicPizza.Infrastructure.EntityTypeConfigurations
+{
+    public class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
+    {
+        public void Configure(EntityTypeBuilder<Order> builder)
+        {
+            builder.HasMany(o => o.Items)
+                .WithOne()
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne<Supplier>()
+                .WithMany()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.OwnsOne(o => o.Address);
+            builder.OwnsOne(o => o.Client);
+
+            builder.Property(o => o.Status).HasConversion<string>();
+        }
+    }
+}
