@@ -4,11 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AnemicPizza.Infrastructure.EntityTypeConfigurations
 {
-    internal class PizzaEntityTypeConfiguration : IEntityTypeConfiguration<Pizza>
+    internal class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
     {
-        public void Configure(EntityTypeBuilder<Pizza> builder)
+        public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.Property(p => p.Type).HasConversion<string>();
+            builder.HasKey(p => p.Id);
         }
     }
 }

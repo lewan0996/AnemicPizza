@@ -12,12 +12,13 @@ namespace AnemicPizza.Infrastructure.EntityTypeConfigurations
                 .WithOne()
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne<Supplier>()
-                .WithMany()
-                .OnDelete(DeleteBehavior.Restrict);
-
             builder.OwnsOne(o => o.Address);
             builder.OwnsOne(o => o.Client);
+
+            builder.HasOne(o => o.Supplier)
+                .WithMany()
+                .HasForeignKey(o => o.SupplierId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Property(o => o.Status).HasConversion<string>();
         }

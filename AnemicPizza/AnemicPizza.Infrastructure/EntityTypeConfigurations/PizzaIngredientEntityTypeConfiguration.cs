@@ -15,7 +15,7 @@ namespace AnemicPizza.Infrastructure.EntityTypeConfigurations
 
             builder.HasOne(pi => pi.Ingredient)
                 .WithMany()
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict); // Because of TPH there is a cycle
         }
     }
 }

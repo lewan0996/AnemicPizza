@@ -7,6 +7,7 @@ namespace AnemicPizza.Infrastructure
 {
     public class AppDbContext : DbContext
     {
+        public DbSet<Product> Products { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<Pizza> Pizzas { get; set; }
         public DbSet<Order> Orders { get; set; }

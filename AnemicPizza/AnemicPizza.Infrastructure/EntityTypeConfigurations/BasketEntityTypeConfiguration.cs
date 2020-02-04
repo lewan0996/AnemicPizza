@@ -9,7 +9,7 @@ namespace AnemicPizza.Infrastructure.EntityTypeConfigurations
         public void Configure(EntityTypeBuilder<CustomerBasket> builder)
         {
             builder.HasMany(b => b.Items)
-                .WithOne()
+                .WithOne(bi=>bi.Basket)
                 .HasForeignKey(bi => bi.BasketId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);

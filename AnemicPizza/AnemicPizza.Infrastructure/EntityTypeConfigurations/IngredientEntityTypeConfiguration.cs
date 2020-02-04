@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AnemicPizza.Infrastructure.EntityTypeConfigurations
 {
-    public class IngredientEntityTypeConfiguration : IEntityTypeConfiguration<Ingredient>
+    internal class IngredientEntityTypeConfiguration : IEntityTypeConfiguration<Ingredient>
     {
         public void Configure(EntityTypeBuilder<Ingredient> builder)
         {
