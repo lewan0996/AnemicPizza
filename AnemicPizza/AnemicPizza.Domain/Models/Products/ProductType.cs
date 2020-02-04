@@ -1,4 +1,4 @@
-﻿namespace AnemicPizza.Domain.Models.Products
+﻿namespace AnemicPizza.Core.Models.Products
 {
     public enum ProductType
     {

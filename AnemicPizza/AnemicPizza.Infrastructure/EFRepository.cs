@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AnemicPizza.Domain;
-using AnemicPizza.Domain.Models;
+using AnemicPizza.Core;
+using AnemicPizza.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnemicPizza.Infrastructure
@@ -18,6 +18,7 @@ namespace AnemicPizza.Infrastructure
         public virtual async Task AddAsync(T item)
         {
             await DbContext.Set<T>().AddAsync(item);
+            await DbContext.SaveChangesAsync(); //todo UnitOfWork
         }
 
         public virtual async Task<T> GetByIdAsync(int id)
@@ -25,7 +26,7 @@ namespace AnemicPizza.Infrastructure
             return await DbContext.Set<T>().FindAsync(id);
         }
 
-        public virtual async Task<IReadOnlyList<T>> GetAll()
+        public virtual async Task<IReadOnlyList<T>> GetAllAsync()
         {
             return await DbContext.Set<T>().ToListAsync();
         }
@@ -33,6 +34,7 @@ namespace AnemicPizza.Infrastructure
         public virtual void Delete(T item)
         {
             DbContext.Set<T>().Remove(item);
+            DbContext.SaveChanges(); //todo UnitOfWork
         }
     }
 }

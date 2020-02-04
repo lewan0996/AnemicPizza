@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using AnemicPizza.Domain.Models.Ordering;
+using AnemicPizza.Core.Models.Ordering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnemicPizza.Infrastructure

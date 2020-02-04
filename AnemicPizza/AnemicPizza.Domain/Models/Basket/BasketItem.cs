@@ -1,6 +1,6 @@
-﻿using AnemicPizza.Domain.Models.Products;
+﻿using AnemicPizza.Core.Models.Products;
 
-namespace AnemicPizza.Domain.Models.Basket
+namespace AnemicPizza.Core.Models.Basket
 {
     public class BasketItem : Entity
     {

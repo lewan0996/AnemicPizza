@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AnemicPizza.Domain.Models.Basket
+namespace AnemicPizza.Core.Models.Basket
 {
     public class CustomerBasket : Entity
     {

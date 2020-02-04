@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AnemicPizza.Domain.Models;
+using AnemicPizza.Core.Models;
 
-namespace AnemicPizza.Domain
+namespace AnemicPizza.Core
 {
     public interface IRepository<T> where T: Entity
     {
         Task AddAsync(T item);
         Task<T> GetByIdAsync(int id);
-        Task<IReadOnlyList<T>> GetAll();
+        Task<IReadOnlyList<T>> GetAllAsync();
         void Delete(T item);
         //IUnitOfWork UnitOfWork { get; } //todo UnitOfWork
     }

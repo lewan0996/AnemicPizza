@@ -1,6 +1,6 @@
-﻿using AnemicPizza.Domain.Models.Basket;
-using AnemicPizza.Domain.Models.Ordering;
-using AnemicPizza.Domain.Models.Products;
+﻿using AnemicPizza.Core.Models.Basket;
+using AnemicPizza.Core.Models.Ordering;
+using AnemicPizza.Core.Models.Products;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnemicPizza.Infrastructure

@@ -1,14 +1,22 @@
-using AnemicPizza.Domain;
-using AnemicPizza.Domain.Models.Basket;
-using AnemicPizza.Domain.Models.Ordering;
-using AnemicPizza.Domain.Models.Products;
+using System;
+using System.Reflection;
+using AnemicPizza.API.Filters;
+using AnemicPizza.Core;
+using AnemicPizza.Core.Models.Basket;
+using AnemicPizza.Core.Models.Ordering;
+using AnemicPizza.Core.Models.Products;
+using AnemicPizza.Core.Services;
+using AnemicPizza.Core.Services.Interfaces;
 using AnemicPizza.Infrastructure;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace AnemicPizza.API
 {
@@ -26,6 +34,8 @@ namespace AnemicPizza.API
         {
             services.AddControllers();
 
+            services.AddMvc(options => options.Filters.Add(typeof(GlobalExceptionFilter)));
+
             services
                 .AddDbContext<AppDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SqlServer"))
@@ -36,6 +46,21 @@ namespace AnemicPizza.API
             services.AddScoped<IRepository<Order>, OrderRepository>();
             services.AddScoped<IRepository<Pizza>, PizzaRepository>();
             services.AddScoped<IRepository<Supplier>, SupplierRepository>();
+
+            services.AddScoped<IIngredientService, IngredientService>();
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "AnemicPizza API",
+                    Version = "v1",
+                    Description = "The AnemicPizza API"
+                });
+                options.IncludeXmlComments($@"{AppDomain.CurrentDomain.BaseDirectory}\{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,9 +73,17 @@ namespace AnemicPizza.API
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseSwagger()
+                .UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Anemic Pizza API");
+                });
 
-            app.UseAuthorization();
+            var swaggerRewriteOptions = new RewriteOptions();
+            swaggerRewriteOptions.AddRedirect("^$", "swagger");
+            app.UseRewriter(swaggerRewriteOptions);
+
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {

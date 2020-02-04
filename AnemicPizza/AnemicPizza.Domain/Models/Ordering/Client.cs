@@ -1,4 +1,4 @@
-﻿namespace AnemicPizza.Domain.Models.Ordering
+﻿namespace AnemicPizza.Core.Models.Ordering
 {
     public class Client
     {

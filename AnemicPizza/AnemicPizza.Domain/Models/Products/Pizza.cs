@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AnemicPizza.Domain.Models.Products
+namespace AnemicPizza.Core.Models.Products
 {
     public class Pizza : Product
     {

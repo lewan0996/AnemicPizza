@@ -1,6 +1,6 @@
-﻿using AnemicPizza.Domain.Models.Products;
+﻿using AnemicPizza.Core.Models.Products;
 
-namespace AnemicPizza.Domain.Models.Ordering
+namespace AnemicPizza.Core.Models.Ordering
 {
     public class OrderItem : Entity
     {

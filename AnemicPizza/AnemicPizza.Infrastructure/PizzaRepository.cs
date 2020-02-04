@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AnemicPizza.Domain.Models.Products;
+using AnemicPizza.Core.Models.Products;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnemicPizza.Infrastructure
@@ -11,7 +11,7 @@ namespace AnemicPizza.Infrastructure
         {
         }
 
-        public override async Task<IReadOnlyList<Pizza>> GetAll()
+        public override async Task<IReadOnlyList<Pizza>> GetAllAsync()
         {
             return await DbContext.Pizzas
                 .Include(p => p.Ingredients)

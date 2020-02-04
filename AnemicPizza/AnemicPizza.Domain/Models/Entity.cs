@@ -1,4 +1,4 @@
-﻿namespace AnemicPizza.Domain.Models
+﻿namespace AnemicPizza.Core.Models
 {
     public abstract class Entity
     {

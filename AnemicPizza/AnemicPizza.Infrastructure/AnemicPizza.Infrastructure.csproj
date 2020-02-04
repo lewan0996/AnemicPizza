@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AnemicPizza.Domain\AnemicPizza.Domain.csproj" />
+    <ProjectReference Include="..\AnemicPizza.Domain\AnemicPizza.Core.csproj" />
   </ItemGroup>
 
 </Project>

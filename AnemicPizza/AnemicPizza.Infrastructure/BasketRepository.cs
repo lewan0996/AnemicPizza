@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using AnemicPizza.Domain.Models.Basket;
+using AnemicPizza.Core.Models.Basket;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnemicPizza.Infrastructure

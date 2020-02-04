@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AnemicPizza.Domain.Models.Ordering
+namespace AnemicPizza.Core.Models.Ordering
 {
     public class Order : Entity
     {

@@ -1,4 +1,4 @@
-﻿using AnemicPizza.Domain.Models.Products;
+﻿using AnemicPizza.Core.Models.Products;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

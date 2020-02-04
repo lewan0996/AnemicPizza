@@ -1,5 +1,5 @@
-﻿using AnemicPizza.Domain.Models;
-using AnemicPizza.Domain.Models.Ordering;
+﻿using AnemicPizza.Core.Models;
+using AnemicPizza.Core.Models.Ordering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
