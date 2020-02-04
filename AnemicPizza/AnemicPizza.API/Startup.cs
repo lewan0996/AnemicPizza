@@ -1,3 +1,7 @@
+using AnemicPizza.Domain;
+using AnemicPizza.Domain.Models.Basket;
+using AnemicPizza.Domain.Models.Ordering;
+using AnemicPizza.Domain.Models.Products;
 using AnemicPizza.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +30,12 @@ namespace AnemicPizza.API
                 .AddDbContext<AppDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SqlServer"))
                 );
+
+            services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
+            services.AddScoped<IRepository<CustomerBasket>, BasketRepository>();
+            services.AddScoped<IRepository<Order>, OrderRepository>();
+            services.AddScoped<IRepository<Pizza>, PizzaRepository>();
+            services.AddScoped<IRepository<Supplier>, SupplierRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
