@@ -48,6 +48,7 @@ namespace AnemicPizza.API
             services.AddScoped<IRepository<Supplier>, SupplierRepository>();
 
             services.AddScoped<IIngredientService, IngredientService>();
+            services.AddScoped<IPizzaService, PizzaService>();
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

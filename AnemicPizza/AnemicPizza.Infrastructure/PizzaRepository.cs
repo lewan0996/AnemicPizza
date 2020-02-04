@@ -11,6 +11,14 @@ namespace AnemicPizza.Infrastructure
         {
         }
 
+        public override Task<Pizza> GetByIdAsync(int id)
+        {
+            return DbContext.Pizzas
+                .Include(p => p.Ingredients)
+                .ThenInclude(pi => pi.Ingredient)
+                .FirstOrDefaultAsync(p => p.Id == id);
+        }
+
         public override async Task<IReadOnlyList<Pizza>> GetAllAsync()
         {
             return await DbContext.Pizzas

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using AnemicPizza.API.DTO.Ingredient;
+using AnemicPizza.API.DTO.Pizza;
 using AnemicPizza.Core.Services.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -12,60 +13,57 @@ namespace AnemicPizza.API.Controllers
     [Route("api/[controller]")]
     [Produces("application/json")]
     [ApiController]
-    public class IngredientsController : ControllerBase
+    public class PizzasController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly IIngredientService _ingredientService;
+        private readonly IPizzaService _pizzaService;
 
-        public IngredientsController(IMapper mapper, IIngredientService ingredientService)
+        public PizzasController(IMapper mapper, IPizzaService pizzaService)
         {
             _mapper = mapper;
-            _ingredientService = ingredientService;
+            _pizzaService = pizzaService;
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(IReadOnlyList<IngredientDTO>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(IReadOnlyList<PizzaDTO>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetAll()
         {
-            var result = await _ingredientService.GetAllIngredientsAsync();
+            var result = await _pizzaService.GetAllPizzasAsync();
 
             var mappedResult = 
-                result.Select(i => _mapper.Map<IngredientDTO>(i));
+                result.Select(i => _mapper.Map<PizzaDTO>(i));
 
             return Ok(mappedResult);
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(IngredientDTO), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(PizzaDTO), (int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<ActionResult> Get(int id)
         {
-            var ingredient = await _ingredientService.GetIngredientByIdAsync(id);
-            if (ingredient == null)
+            var pizza = await _pizzaService.GetPizzaByIdAsync(id);
+            if (pizza == null)
             {
                 return NotFound();
             }
 
-            var ingredientDto = _mapper.Map<IngredientDTO>(ingredient);
+            var pizzaDTO = _mapper.Map<PizzaDTO>(pizza);
 
-            return Ok(ingredientDto);
+            return Ok(pizzaDTO);
         }
 
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(IngredientDTO), (int)HttpStatusCode.Created)]
-        public async Task<ActionResult> Create([FromBody] CreateIngredientDTO dto)
+        [ProducesResponseType(typeof(PizzaDTO), (int)HttpStatusCode.Created)]
+        public async Task<ActionResult> Create([FromBody] CreatePizzaDTO dto)
         {
-            var result = await _ingredientService.CreateIngredientAsync(
+            var result = await _pizzaService.CreatePizzaAsync(
                 dto.Name,
                 dto.Description,
                 dto.UnitPrice,
-                dto.AvailableQuantity,
-                dto.IsSpicy,
-                dto.IsVegetarian,
-                dto.IsVegan);
+                dto.IngredientIds);
 
-            var resultDto = _mapper.Map<IngredientDTO>(result);
+            var resultDto = _mapper.Map<PizzaDTO>(result);
 
             return CreatedAtAction(nameof(Get), new {resultDto.Id}, resultDto);
         }
@@ -75,7 +73,7 @@ namespace AnemicPizza.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<ActionResult> Delete(int id)
         {
-            await _ingredientService.DeleteIngredientAsync(id);
+            await _pizzaService.DeletePizzaAsync(id);
 
             return NoContent();
         }
@@ -83,17 +81,14 @@ namespace AnemicPizza.API.Controllers
         [HttpPatch("{id}")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<ActionResult> Update(int id, [FromBody]UpdateIngredientDTO dto)
+        public async Task<ActionResult> Update(int id, [FromBody]UpdatePizzaDTO dto)
         {
-            await _ingredientService.UpdateIngredientAsync(
+            await _pizzaService.UpdatePizzaAsync(
                 id,
                 dto.Name,
                 dto.Description,
                 dto.UnitPrice,
-                dto.AvailableQuantity,
-                dto.IsSpicy,
-                dto.IsVegetarian,
-                dto.IsVegan);
+                dto.IngredientIds);
 
             return NoContent();
         }

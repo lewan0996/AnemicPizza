@@ -9,5 +9,15 @@ namespace AnemicPizza.Core.Models.Products
         public override int AvailableQuantity => 
             Ingredients.Min(pi => pi.Ingredient.AvailableQuantity);
         public IList<PizzaIngredient> Ingredients { get; set; }
+
+        public Pizza(string name, string description, float unitPrice) : base(name,description,unitPrice)
+        {
+            Ingredients = new List<PizzaIngredient>();
+        }
+
+        protected Pizza() // For EF
+        {
+
+        }
     }
 }
