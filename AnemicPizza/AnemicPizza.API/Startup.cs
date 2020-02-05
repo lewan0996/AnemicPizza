@@ -47,6 +47,8 @@ namespace AnemicPizza.API
             services.AddScoped<IRepository<Pizza>, PizzaRepository>();
             services.AddScoped<IRepository<Supplier>, SupplierRepository>();
 
+            services.AddScoped<IUnitOfWorkFactory, EFUnitOfWorkFactory>();
+
             services.AddScoped<IIngredientService, IngredientService>();
             services.AddScoped<IPizzaService, PizzaService>();
 
