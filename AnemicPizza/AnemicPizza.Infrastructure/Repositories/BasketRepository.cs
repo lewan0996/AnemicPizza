@@ -2,7 +2,7 @@
 using AnemicPizza.Core.Models.Basket;
 using Microsoft.EntityFrameworkCore;
 
-namespace AnemicPizza.Infrastructure
+namespace AnemicPizza.Infrastructure.Repositories
 {
     public class BasketRepository : EFRepository<CustomerBasket>
     {
@@ -13,6 +13,7 @@ namespace AnemicPizza.Infrastructure
         {
             return DbContext.CustomerBaskets
                 .Include(b => b.Items)
+                .ThenInclude(bi => bi.Product)
                 .FirstOrDefaultAsync(b => b.Id == id);
         }
     }

@@ -13,8 +13,8 @@ namespace AnemicPizza.Infrastructure.EntityTypeConfigurations
 
             var seedData = new[]
             {
-                new Supplier {FirstName = "Jan", LastName = "Kowalski"},
-                new Supplier {FirstName = "Adam", LastName = "Nowak"}
+                new Supplier {FirstName = "Jan", LastName = "Kowalski", Status = SupplierStatus.Free},
+                new Supplier {FirstName = "Adam", LastName = "Nowak", Status = SupplierStatus.Free}
             };
 
             var idPropertyInfo = typeof(Entity).GetProperty(nameof(Entity.Id));

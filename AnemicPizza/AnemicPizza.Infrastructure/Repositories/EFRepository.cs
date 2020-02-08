@@ -4,7 +4,7 @@ using AnemicPizza.Core;
 using AnemicPizza.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AnemicPizza.Infrastructure
+namespace AnemicPizza.Infrastructure.Repositories
 {
     public class EFRepository<T> : IRepository<T> where T : Entity
     {

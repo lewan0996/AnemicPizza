@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using AnemicPizza.Core.Models.Products;
 using Microsoft.EntityFrameworkCore;
 
-namespace AnemicPizza.Infrastructure
+namespace AnemicPizza.Infrastructure.Repositories
 {
     public class PizzaRepository : EFRepository<Pizza>
     {

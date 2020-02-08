@@ -10,7 +10,7 @@ namespace AnemicPizza.Core.Models.Products
         public float UnitPrice { get; set; }
         public virtual int AvailableQuantity { get; set; }
 
-        public Product(string name, string description, float unitPrice, int availableQuantity=0)
+        public Product(string name, string description, float unitPrice, int availableQuantity = 0)
         {
             Name = name;
             Description = description;
@@ -20,7 +20,7 @@ namespace AnemicPizza.Core.Models.Products
 
         protected Product() // For EF
         {
-            
+
         }
 
         public void Validate()
@@ -38,6 +38,16 @@ namespace AnemicPizza.Core.Models.Products
                 throw new DomainException(new ArgumentException("The quantity of the product must be greater than 0",
                     nameof(AvailableQuantity)));
             }
+        }
+
+        public virtual void TakeFromWarehouse(int quantity)
+        {
+            if (AvailableQuantity - quantity <= 0)
+            {
+                throw new DomainException(new ArgumentException("The quantity of the product must be greater than 0",
+                    nameof(quantity)));
+            }
+            AvailableQuantity -= quantity;
         }
     }
 }

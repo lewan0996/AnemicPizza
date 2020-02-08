@@ -8,6 +8,7 @@ using AnemicPizza.Core.Models.Products;
 using AnemicPizza.Core.Services;
 using AnemicPizza.Core.Services.Interfaces;
 using AnemicPizza.Infrastructure;
+using AnemicPizza.Infrastructure.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,6 +18,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+#pragma warning disable 1591
 
 namespace AnemicPizza.API
 {
@@ -42,14 +44,19 @@ namespace AnemicPizza.API
                 );
 
             services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
+            services.AddScoped<IRepository<Product>, ProductRepository>();
             services.AddScoped<IRepository<CustomerBasket>, BasketRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IRepository<Order>, OrderRepository>();
             services.AddScoped<IRepository<Pizza>, PizzaRepository>();
-            services.AddScoped<IRepository<Supplier>, SupplierRepository>();
+            services.AddScoped<ISupplierRepository, SupplierRepository>();
 
             services.AddScoped<IUnitOfWorkFactory, EFUnitOfWorkFactory>();
 
+            services.AddScoped<IBasketService, BasketService>();
+            services.AddScoped<IDeliveryService, DeliveryService>();
             services.AddScoped<IIngredientService, IngredientService>();
+            services.AddScoped<IOrderingService, OrderingService>();
             services.AddScoped<IPizzaService, PizzaService>();
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());

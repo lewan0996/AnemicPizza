@@ -9,7 +9,7 @@ namespace AnemicPizza.Core.Models.Ordering
         public IList<OrderItem> Items { get; set; }
         public OrderStatus Status { get; set; }
         public Supplier Supplier { get; set; }
-        public int SupplierId { get; set; }
+        public int? SupplierId { get; set; }
     }
 
     public enum OrderStatus

@@ -19,5 +19,13 @@ namespace AnemicPizza.Core.Models.Products
         {
 
         }
+
+        public override void TakeFromWarehouse(int quantity)
+        {
+            foreach (var pizzaIngredient in Ingredients)
+            {
+                pizzaIngredient.Ingredient.TakeFromWarehouse(quantity);
+            }
+        }
     }
 }
