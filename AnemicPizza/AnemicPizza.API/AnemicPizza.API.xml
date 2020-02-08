@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AnemicPizza.API</name>
+    </assembly>
+    <members>
+        <member name="M:AnemicPizza.API.Controllers.BasketController.AddItemToBasket(AnemicPizza.API.DTO.Basket.AddItemToBasketDTO)">
+            <summary>
+            Adds an item to the current user's basket
+            </summary>
+        </member>
+        <member name="M:AnemicPizza.API.Controllers.BasketController.Checkout(AnemicPizza.API.DTO.Basket.CheckoutDTO)">
+            <summary>
+            Creates a new order based on customer's basket
+            </summary>
+            <param name="dto">Checkout data</param>
+        </member>
+    </members>
+</doc>
