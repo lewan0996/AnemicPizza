@@ -1,5 +1,6 @@
 ﻿using AnemicPizza.Core.Models.Basket;
 using AutoMapper;
+#pragma warning disable 1591
 
 namespace AnemicPizza.API.DTO.Basket
 {

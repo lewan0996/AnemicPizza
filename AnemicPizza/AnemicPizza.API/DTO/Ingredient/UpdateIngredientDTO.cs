@@ -1,4 +1,6 @@
-﻿namespace AnemicPizza.API.DTO.Ingredient
+﻿// ReSharper disable UnusedAutoPropertyAccessor.Global
+#pragma warning disable 1591
+namespace AnemicPizza.API.DTO.Ingredient
 {
     public class UpdateIngredientDTO
     {

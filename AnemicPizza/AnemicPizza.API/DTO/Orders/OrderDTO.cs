@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using AnemicPizza.Core.Models.Ordering;
 using AutoMapper;
+#pragma warning disable 1591
 
 namespace AnemicPizza.API.DTO.Orders
 {

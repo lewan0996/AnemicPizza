@@ -4,10 +4,10 @@ using System.Net;
 using System.Threading.Tasks;
 using AnemicPizza.API.DTO.Ingredient;
 using AnemicPizza.Core;
-using AnemicPizza.Core.Models.Products;
 using AnemicPizza.Core.Services.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+#pragma warning disable 1591
 
 namespace AnemicPizza.API.Controllers
 {

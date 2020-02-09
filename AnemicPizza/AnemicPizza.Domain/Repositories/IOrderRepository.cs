@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using AnemicPizza.Core.Models.Ordering;
 
-namespace AnemicPizza.Core
+namespace AnemicPizza.Core.Repositories
 {
     public interface IOrderRepository : IRepository<Order>
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AnemicPizza.Core;
 using AnemicPizza.Core.Models.Ordering;
+using AnemicPizza.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnemicPizza.Infrastructure.Repositories

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using AnemicPizza.Core.Models;
 
-namespace AnemicPizza.Core
+namespace AnemicPizza.Core.Repositories
 {
     public interface IRepository<T> where T: Entity
     {

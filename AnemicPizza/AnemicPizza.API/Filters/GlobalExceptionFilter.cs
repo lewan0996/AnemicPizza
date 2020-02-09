@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using AnemicPizza.Core;
+using AnemicPizza.Core.Exceptions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+#pragma warning disable 1591
 
 namespace AnemicPizza.API.Filters
 {

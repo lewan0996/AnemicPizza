@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+#pragma warning disable 1591
 
 namespace AnemicPizza.API.DTO.Basket
 {

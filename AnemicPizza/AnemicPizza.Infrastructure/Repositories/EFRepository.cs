@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AnemicPizza.Core;
 using AnemicPizza.Core.Models;
+using AnemicPizza.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnemicPizza.Infrastructure.Repositories
