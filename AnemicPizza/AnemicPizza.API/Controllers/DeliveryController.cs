@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using AnemicPizza.API.DTO.Orders;
 using AnemicPizza.Core;
 using AnemicPizza.Core.Services.Interfaces;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+#pragma warning disable 1591
 
 namespace AnemicPizza.API.Controllers
 {
@@ -32,6 +30,7 @@ namespace AnemicPizza.API.Controllers
         {
             var supplierOrders = await _deliveryService.GetSupplierOrdersAsync(supplierId);
 
+            // ReSharper disable once InconsistentNaming
             var supplierOrderDTOs = supplierOrders
                 .Select(o => _mapper.Map<OrderDTO>(o));
 

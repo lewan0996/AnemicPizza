@@ -1,4 +1,6 @@
 ﻿using System;
+using AnemicPizza.Core.Exceptions;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 
 namespace AnemicPizza.Core.Models.Products
 {
@@ -6,16 +8,22 @@ namespace AnemicPizza.Core.Models.Products
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public virtual ProductType Type { get; set; }
+        public virtual ProductType Type { get; private set; }
         public float UnitPrice { get; set; }
-        public virtual int AvailableQuantity { get; set; }
+        private int _availableQuantity;
+        public virtual int AvailableQuantity
+        {
+            get => _availableQuantity;
+            set => _availableQuantity = value;
+        }
 
-        public Product(string name, string description, float unitPrice, int availableQuantity = 0)
+        public Product(string name, string description, float unitPrice, ProductType type, int availableQuantity = 0)
         {
             Name = name;
             Description = description;
             UnitPrice = unitPrice;
-            AvailableQuantity = availableQuantity;
+            Type = type;
+            _availableQuantity = availableQuantity;
         }
 
         protected Product() // For EF

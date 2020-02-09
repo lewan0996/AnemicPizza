@@ -8,7 +8,8 @@
         public override ProductType Type => ProductType.Ingredient;
 
         public Ingredient(string name, string description, float unitPrice, int availableQuantity, bool isSpicy,
-            bool isVegetarian, bool isVegan) : base(name, description, unitPrice, availableQuantity)
+            bool isVegetarian, bool isVegan) : base(name, description, unitPrice, ProductType.Ingredient,
+            availableQuantity)
         {
             IsSpicy = isSpicy;
             IsVegetarian = isVegetarian;

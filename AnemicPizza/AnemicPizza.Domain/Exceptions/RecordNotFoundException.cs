@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AnemicPizza.Core
+namespace AnemicPizza.Core.Exceptions
 {
     public class RecordNotFoundException : Exception
     {

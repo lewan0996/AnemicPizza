@@ -7,6 +7,7 @@ using AnemicPizza.Core;
 using AnemicPizza.Core.Services.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+#pragma warning disable 1591
 
 namespace AnemicPizza.API.Controllers
 {

@@ -10,7 +10,8 @@ namespace AnemicPizza.Core.Models.Products
             Ingredients.Min(pi => pi.Ingredient.AvailableQuantity);
         public IList<PizzaIngredient> Ingredients { get; set; }
 
-        public Pizza(string name, string description, float unitPrice) : base(name,description,unitPrice)
+        public Pizza(string name, string description, float unitPrice) : base(name, description, unitPrice,
+            ProductType.Pizza)
         {
             Ingredients = new List<PizzaIngredient>();
         }

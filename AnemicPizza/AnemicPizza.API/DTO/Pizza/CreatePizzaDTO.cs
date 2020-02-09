@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+#pragma warning disable 1591
 
 namespace AnemicPizza.API.DTO.Pizza
 {
