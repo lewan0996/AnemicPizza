@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\marci\Desktop\AnemicPizza\AnemicPizza\AnemicPizza.API\AnemicPizza.API.xml</DocumentationFile>
+    <DocumentationFile>obj\Debug\netcoreapp3.1\AnemicPizza.API.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>obj\Release\netcoreapp3.1\AnemicPizza.API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
